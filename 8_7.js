@@ -45,6 +45,7 @@ class Node {
 class SinglyLinkedList {
     constructor() {
         this.head = null;
+        this.tail = null;
     }
 
     // all the methods (functionality) of our linked list go here:
@@ -100,6 +101,18 @@ class SinglyLinkedList {
         newHead.next = this.head;
         this.head = newHead;
         return this;
+    }
+
+    addToBack(data) {
+        const newTail = new Node(data);
+        if (this.tail === null) {
+            this.tail = newTail;
+        } else {
+            this.tail.next = newTail;
+            this.tail = newTail;
+        }
+
+
     }
 
     // Time: O(1) constant
@@ -263,18 +276,16 @@ class SinglyLinkedList {
         return this;
     }
 
-    concat(list2){
-        if (this.isEmpty() && list2.isEmpty()){
+    concat(list2) {
+        if (this.isEmpty() && list2.isEmpty()) {
             return null;
-        }
-        else if (this.isEmpty()== true){
+        } else if (this.isEmpty() == true) {
             this.head = list2.head
             list2.head = null
             return this;
-        }
-        else{
+        } else {
             let fList = this.head;
-            while (fList.next != null){
+            while (fList.next != null) {
                 fList = fList.next;
             }
             fList.next = list2.head
@@ -292,15 +303,10 @@ const biNodeList = new SinglyLinkedList().insertAtBack(1).insertAtBack(2);
 const firstThreeList = new SinglyLinkedList().seedFromArr([1, 2, 3]);
 
 const secondThreeList = new SinglyLinkedList().seedFromArr([4, 5, 6]);
-const unorderedList = new SinglyLinkedList().seedFromArr([
-    -5,
-    -10,
-    4,
-    -3,
+const unorderedList = new SinglyLinkedList().seedFromArr([-5, -10,
+    4, -3,
     6,
-    1,
-    -7,
-    -2,
+    1, -7, -2,
 ]);
 
 const sortedDupeList = new SinglyLinkedList().seedFromArr([
