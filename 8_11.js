@@ -1,13 +1,13 @@
-const singlyLinkedList = require("./8_7");
+// const singlyLinkedList = require("./8_7");
 
-class Stack {
+class Queue {
     constructor(items = []) {
             this.items = items;
         }
         // add methods here, outside constructor
     enqueue(data) {
         this.items.push(data);
-        return this.items.length();
+        return this;
     }
 
     dequeue() {
@@ -41,25 +41,47 @@ class Stack {
         return this.items[0];
     }
 
-}
+    compareStack(myOtherQ) {
+        let sl1 = this.items.length;
+        let sl2 = myOtherQ.items.length;
+        console.log(sl1, sl2);
+        if (this.items.length != myOtherQ.items.length) {
+            return false;
+        }
+        else{
 
-class SllStack {
-    constructor(items = new SinglyLinkedList()) {
-        this.items = items;
+            for (let i = 0; i < this.items.length; i++) {
+                if (this.items[i] != myOtherQ.items[i]) {
+                    return false;
+                }
+            }
+            return true;    
+        }
+        }
     }
+    
 
-    enqueue(myItem) {
-        this.items.addToBack(myItem);
-        return this.items.length;
-    }
-    dequeue() {
-        this.items.removeHead();
-        return this.items;
-    }
-    size() {
-        this.items.length;
-    }
-    front() {
-        return this.items.head;
-    }
-}
+
+
+// class SllStack {
+//     constructor(items = new SinglyLinkedList()) {
+//         this.items = items;
+//     }
+
+//     enqueue(myItem) {
+//         this.items.addToBack(myItem);
+//         return this.items.length;
+//     }
+//     dequeue() {
+//         this.items.removeHead();
+//         return this.items;
+//     }
+//     size() {
+//         this.items.length;
+//     }
+//     front() {
+//         return this.items.head;
+//     }
+// }
+
+module.exports = Queue;
