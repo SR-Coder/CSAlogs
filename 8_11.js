@@ -11,7 +11,7 @@ class Stack {
     }
 
     dequeue() {
-        if (this.isEmpty) {
+        if (this.isEmpty()) {
             return null;
         }
         removed = this.items[0];
@@ -35,7 +35,7 @@ class Stack {
     }
 
     front() {
-        if (this.isEmpty) {
+        if (this.isEmpty()) {
             return null;
         }
         return this.items[0];
